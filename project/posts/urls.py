@@ -8,14 +8,14 @@ from .views import(
 	Posts_List,
 	Posts_Create,
 	Posts_Detail,
-	# Posts_Update,
+	Posts_Update,
 	)
 
 urlpatterns = [
 	url(r'^$', Posts_List.as_view(), name='list'),
 	url(r'^create$', Posts_Create.as_view(), name='create'),
 	url(r'^(?P<id>\d+)/$', Posts_Detail.as_view(), name='detail'),
-	# url(r'^(?P<id>\d+)/update$', Posts_Update.as_view(), name='update'),	
+	url(r'^(?P<id>\d+)/update$', Posts_Update.as_view(), name='update'),	
 ]
 
 

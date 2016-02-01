@@ -17,13 +17,14 @@ class Posts_List(View):
 		return render(req, "posts/list.html", context)
 
 class Posts_Detail(View):
+	detail_template = 'posts/detail.html'
 
 	def get(self, req, **kwargs):
 		whiskey = get_object_or_404(Post, id=kwargs['id'])
 		context = {
 			"whiskey":whiskey
 		}
-		return render(req, "posts/detail.html", context)
+		return render(req, self.detail_template, context)
 
 # You can also use this to store your context
 	# def get_context_data(self, **kwargs):
@@ -42,7 +43,6 @@ class Posts_Create(View):
 
 	def post(self, req, *args, **kwargs):
 		create_form = self.form_class(req.POST or None)
-		print(create_form)
 		if create_form.is_valid():
 			instance = create_form.save(commit=False)
 			instance.save()
@@ -50,7 +50,39 @@ class Posts_Create(View):
 		context = {
 			"create":create_form,
 		}
-		return render(req, "posts/list.html", context)
+		return render(req, self.create_template, context)
+
+class Posts_Update(View):
+	form_class = PostForm
+	# initial = {'key': 'value'}
+	update_template = 'posts/update.html'
+
+	def get(self, req, *args, **kwargs):
+		whiskey = get_object_or_404(Post, id=kwargs['id'])
+		update_form = self.form_class(req.POST or None, instance = whiskey)
+		context = {
+			"whiskey": update_form
+		}
+		return render(req, self.update_template, context)
+
+	def post(self, req, *args, **kwargs):
+		whiskey = get_object_or_404(Post, id=kwargs['id'])
+		update_form = self.form_class(req.POST or None, instance = whiskey)
+		if update_form.is_valid():
+			instance = update_form.save(commit=False)
+			instance.save()
+			return redirect(instance)
+		context = {
+			"whiskey":update_form,
+		}
+		return render(req, self.update_template, context)
+
+
+
+
+
+
+
 
 ###########################################################################
 ############		WE ARE CREATING FUNCTION BASED VIEWS	###############
