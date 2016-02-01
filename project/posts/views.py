@@ -16,6 +16,18 @@ class Posts_List(View):
 		}
 		return render(req, "posts/list.html", context)
 
+class Posts_Detail(View):
+
+	def get(self, req, **kwargs):
+		whiskey = get_object_or_404(Post, id=kwargs['id'])
+		context = {
+			"whiskey":whiskey
+		}
+		return render(req, "posts/detail.html", context)
+
+# You can also use this to store your context
+	# def get_context_data(self, **kwargs):
+
 class Posts_Create(View):
 	form_class = PostForm
 	initial = {'key': 'value'}
@@ -39,24 +51,6 @@ class Posts_Create(View):
 			"create":create_form,
 		}
 		return render(req, "posts/list.html", context)
-
-class Posts_Detail(View):
-	detail_template = 'posts/detail.html'
-
-	# def get_context_data(self, **kwargs):
-	# 	# context = super(Posts_Detail, self).get_context_data(**kwargs)
-	# 	context = kwargs
-	# 	print(context)
-	# 	# context['posts'] = Post.objects.get()
-	# 	return context
-
-	def get(self, req, **kwargs):
-		whiskey = get_object_or_404(Post, id=kwargs['id'])
-		context = {
-			"whiskey":whiskey
-		}
-		return render(req, "posts/detail.html", context)
-
 
 ###########################################################################
 ##########	WE ARE CREATING FUNCTION BASED VIEWS BELOW		###############

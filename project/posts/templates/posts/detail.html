@@ -7,12 +7,15 @@
 		<h4>{{whiskey.price}}</h4>
 		<h4>{{whiskey.description}}</h4>
 		
-		<form action="{% url 'posts:update' whiskey.id %}">
-			<input type="submit" value="UPDATE THIS WHISKEY">
-		</form>
+
 
 		<form action="{% url 'posts:list' %}">
 			<input type="submit" value="Back to list">
 		</form>
 
 	{% endblock content%}
+
+<!-- 
+			<form action="{% url 'posts:update' whiskey.id %}">
+			<input type="submit" value="UPDATE THIS WHISKEY">
+		</form> -->
