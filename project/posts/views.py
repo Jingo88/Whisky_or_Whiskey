@@ -43,13 +43,19 @@ class Posts_Create(View):
 class Posts_Detail(View):
 	detail_template = 'posts/detail.html'
 
-	def get_context_data(self, **kwargs):
-		context = super(Posts_Detail, self).get_context_data(**kwargs)
-		context['posts'] = Post.objects.get()
-		return context
+	# def get_context_data(self, **kwargs):
+	# 	# context = super(Posts_Detail, self).get_context_data(**kwargs)
+	# 	context = kwargs
+	# 	print(context)
+	# 	# context['posts'] = Post.objects.get()
+	# 	return context
 
-	def get(self, req):	
-		return render(req, "posts/list.html", context)
+	def get(self, req, **kwargs):
+		whiskey = get_object_or_404(Post, id=kwargs['id'])
+		context = {
+			"whiskey":whiskey
+		}
+		return render(req, "posts/detail.html", context)
 
 
 ###########################################################################
