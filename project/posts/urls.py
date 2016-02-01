@@ -9,13 +9,15 @@ from .views import(
 	Posts_Create,
 	Posts_Detail,
 	Posts_Update,
+	Posts_Delete,
 	)
 
 urlpatterns = [
 	url(r'^$', Posts_List.as_view(), name='list'),
 	url(r'^create$', Posts_Create.as_view(), name='create'),
 	url(r'^(?P<id>\d+)/$', Posts_Detail.as_view(), name='detail'),
-	url(r'^(?P<id>\d+)/update$', Posts_Update.as_view(), name='update'),	
+	url(r'^(?P<id>\d+)/update$', Posts_Update.as_view(), name='update'),
+	url(r'^(?P<id>\d+)/delete$', Posts_Delete.as_view(), name='delete'),	
 ]
 
 

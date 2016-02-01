@@ -77,7 +77,14 @@ class Posts_Update(View):
 		}
 		return render(req, self.update_template, context)
 
+class Posts_Delete(View):
 
+	def get(self, req, **kwargs):
+		instance = get_object_or_404(Post, id=kwargs['id'])
+		print("THIS IS THE INSTANCE!!!!!!!      " )
+		print(instance)
+		instance.delete()
+		return redirect('posts:list', permanent=True)
 
 
 
