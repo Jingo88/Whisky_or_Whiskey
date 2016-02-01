@@ -5,7 +5,7 @@ from posts.forms import PostForm
 from django.views.generic import View
 
 ###########################################################################
-##########	WE ARE CREATING CLASS BASED VIEWS BELOW		###############
+##############		WE ARE CREATING CLASS BASED VIEWS 	###################
 ###########################################################################
 
 class Posts_List(View):
@@ -53,7 +53,7 @@ class Posts_Create(View):
 		return render(req, "posts/list.html", context)
 
 ###########################################################################
-##########	WE ARE CREATING FUNCTION BASED VIEWS BELOW		###############
+############		WE ARE CREATING FUNCTION BASED VIEWS	###############
 ###########################################################################
 
 # def posts_list(req):

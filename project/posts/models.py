@@ -13,6 +13,6 @@ class Post(models.Model):
 		return self.brand
 		# return "{} {}".format(self.brand, self.brand_type)
 
-	# def get_absolute_url(self):
-	# 	print()
-	# 	return reverse("posts:detail", kwargs={"id":self.id})
+	def get_absolute_url(self):
+		print()
+		return reverse("posts:detail", kwargs={"id":self.id})
