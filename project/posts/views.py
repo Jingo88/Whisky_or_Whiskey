@@ -80,10 +80,9 @@ class Posts_Update(View):
 class Posts_Delete(View):
 
 	def get(self, req, **kwargs):
-		instance = get_object_or_404(Post, id=kwargs['id'])
-		print("THIS IS THE INSTANCE!!!!!!!      " )
-		print(instance)
+		instance = get_object_or_404(Post, id=kwargs['id'])		
 		instance.delete()
+		# have to set permanent to True
 		return redirect('posts:list', permanent=True)
 
 
