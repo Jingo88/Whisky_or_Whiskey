@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import User
+from django.contrib.auth.models import User
 from django.views.generic import View
 from django import forms
 from .forms import UserForm
@@ -71,7 +71,7 @@ class Users_Login(View):
 		print(user)
 		if user:
 			print("WE ARE IN THE USER OF POST NOW!!!!")
-			if user.is_active():
+			if user.is_active:
 				print(req.session)
 				req.session['user_id']=user.id
 				req.session.set_expiry(10)
