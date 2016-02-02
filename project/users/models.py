@@ -11,6 +11,7 @@ class User(models.Model):
 	age = models.IntegerField()
 	bio = models.TextField()
 
+
 	def __str__(self):
 		return self.username
 		# return "{} {}".format(self.brand, self.brand_type)
