@@ -83,7 +83,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
@@ -127,5 +126,8 @@ STATICFILES_DIRS = [
     # '/var/www/static/',
 ]
 
+# Sessions
+# Added Manually
 
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 
